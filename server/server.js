@@ -14,7 +14,7 @@ const app = express();
 // Setup CORS to allow requests from your frontend
 app.use(
   cors({
-    origin: "https://to-do-mern-frontend-ten.vercel.app", // Frontend origin
+    origin: 'https://to-do-mern-frontend-ten.vercel.app', // Frontend origin
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true, // Allow credentials (cookies, authorization headers, etc.)
     allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
