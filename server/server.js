@@ -20,11 +20,7 @@ dotenv.config();
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "https://to-do-mern-nine.vercel.app",
-      "https://to-do-mern-frontend-ten.vercel.app/"
-    ],
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
     crendetials: true,
   })
