@@ -24,7 +24,7 @@ function App() {
 
     if (token && userId) {
       try {
-        const response = await fetch(`https://to-do-mern-nine.vercel.app:3000/list/${userId}/lists`, {
+        const response = await fetch(`https://to-do-mern-nine.vercel.app/list/${userId}/lists`, {
           headers: {
             "Authorization": `Bearer ${token}`
           }
@@ -73,7 +73,7 @@ function App() {
     const userId = localStorage.getItem("userId");
     if (token && userId) {
       try {
-        const response = await fetch(`https://to-do-mern-nine.vercel.app:3000/list/${userId}/lists/create`, {
+        const response = await fetch(`https://to-do-mern-nine.vercel.app/list/${userId}/lists/create`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -105,7 +105,7 @@ function App() {
     const userId = localStorage.getItem("userId");
     if (token && userId) {
       try {
-        const response = await fetch(`https://to-do-mern-nine.vercel.app:3000/list/${userId}/lists/update/${id}`, {
+        const response = await fetch(`https://to-do-mern-nine.vercel.app/list/${userId}/lists/update/${id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
