@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import './App.css';
@@ -24,10 +24,11 @@ function App() {
 
     if (token && userId) {
       try {
-        const response = await fetch(`https://to-do-mern-git-main-sankalp-sharmas-projects.vercel.app/list/${userId}/lists`, {
+        const response = await fetch(`https://to-do-mern-nine.vercel.app/list/${userId}/lists`, {
           headers: {
             "Authorization": `Bearer ${token}`
-          }
+          },
+          credentials: 'include' // Ensure credentials are included
         });
         if (response.ok) {
           const data = await response.json();
@@ -39,7 +40,7 @@ function App() {
       } catch (error) {
         console.error("Error:", error);
       } finally {
-        setTimeout(() => setLoading(false), 500);  // Stop loading after 2 seconds
+        setLoading(false); // Stop loading
       }
     } else {
       console.error("Token or userId is missing");
@@ -73,13 +74,14 @@ function App() {
     const userId = localStorage.getItem("userId");
     if (token && userId) {
       try {
-        const response = await fetch(`https://to-do-mern-git-main-sankalp-sharmas-projects.vercel.app/list/${userId}/lists/create`, {
+        const response = await fetch(`https://to-do-mern-nine.vercel.app/list/${userId}/lists/create`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
           },
-          body: JSON.stringify({ description: note })
+          body: JSON.stringify({ description: note }),
+          credentials: 'include' // Ensure credentials are included
         });
 
         if (response.ok) {
@@ -93,25 +95,25 @@ function App() {
         }
       } catch (error) {
         console.error("Error:", error);
-      }finally{
-        fetchNotes();
-      }
+      } finally {
+        fetchNotes(); // Refresh notes after saving
       }
     }
-
+  };
 
   const handleCheckboxChange = async (id, currentCheckedState) => {
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("userId");
     if (token && userId) {
       try {
-        const response = await fetch(`https://to-do-mern-git-main-sankalp-sharmas-projects.vercel.app/list/${userId}/lists/update/${id}`, {
+        const response = await fetch(`https://to-do-mern-nine.vercel.app/list/${userId}/lists/update/${id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
             "Authorization": `Bearer ${token}`
           },
-          body: JSON.stringify({ isChecked: !currentCheckedState })
+          body: JSON.stringify({ isChecked: !currentCheckedState }),
+          credentials: 'include' // Ensure credentials are included
         });
 
         if (response.ok) {
@@ -135,15 +137,15 @@ function App() {
     const userId = localStorage.getItem("userId");
     if (token && userId) {
       try {
-        const response = await fetch(`https://to-do-mern-git-main-sankalp-sharmas-projects.vercel.app/list/${userId}/lists/delete/${listId}`, {
+        const response = await fetch(`https://to-do-mern-nine.vercel.app/list/${userId}/lists/delete/${listId}`, {
           method: "DELETE",
           headers: {
             "Authorization": `Bearer ${token}`
-          }
+          },
+          credentials: 'include' // Ensure credentials are included
         });
 
         if (response.ok) {
-
           setSaved(prevSaved => {
             const updatedSaved = prevSaved.filter(item => item._id !== listId);
             setEmpty(updatedSaved.length === 0);
@@ -174,13 +176,13 @@ function App() {
       <div className='container'>
         {loading ? (
           <div className="loading-screen">
-            <h2 style={{ textAlign: "center",fontFamily:"Kanit",position:"absolute",top:"30%",left:"45%" }}>Loading...</h2>
+            <h2 style={{ textAlign: "center", fontFamily: "Kanit", position: "absolute", top: "30%", left: "45%" }}>Loading...</h2>
           </div>
         ) : (
           <Routes>
             <Route path="/" element={<Login setUser={setUser} />} />
             <Route path='/register' element={<Register />} />
-            <Route path='/login' element={<Login setUser={setUser} fetchNotes={fetchNotes}/>} />
+            <Route path='/login' element={<Login setUser={setUser} fetchNotes={fetchNotes} />} />
             <Route path="/notes" element={
               user ? (
                 <div>
