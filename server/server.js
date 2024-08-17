@@ -18,7 +18,14 @@ const app = express();
 dotenv.config();
 
 
-app.use(cors());
+app.use(cors(),
+ {
+  origin: ["http://localhost:3000", "https://to-do-mern-nine.vercel.app/"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+ }
+
+);
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
