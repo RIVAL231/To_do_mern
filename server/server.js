@@ -20,7 +20,7 @@ dotenv.config();
 
 app.use(
   cors({
-    origin: ["https://to-do-mern-frontend-ten.vercel.app/"]
+    origin: ["https://to-do-mern-frontend-ten.vercel.app"]
     methods: ["GET", "POST", "PUT", "DELETE"],
     crendetials: true,
   })
