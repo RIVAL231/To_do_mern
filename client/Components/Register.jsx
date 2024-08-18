@@ -23,7 +23,7 @@ const navigate = useNavigate();
     
     try {
       // Make a POST request to your registration endpoint
-      const response = await fetch('http://localhost:3000/auth/register', { // Adjust the URL as needed
+      const response = await fetch('https://to-do-mern-nine.vercel.app/auth/register', { // Adjust the URL as needed
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
