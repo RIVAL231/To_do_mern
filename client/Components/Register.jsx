@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-
+import { Link } from 'react-router-dom';
 const Register = () => {
   // State to capture input values
   const [formData, setFormData] = useState({
