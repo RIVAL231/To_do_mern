@@ -69,6 +69,7 @@ const navigate = useNavigate();
         onChange={handleChange} 
       />
       <button type="submit">Register</button>
+      <Link to="/login">Already have an account? Login</Link>
     </form>
     </div>
   );

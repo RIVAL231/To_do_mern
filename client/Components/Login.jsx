@@ -46,6 +46,7 @@ function Login({ setUser,fetchNotes }) {
         placeholder="Password"
       />
       <button onClick={handleLogin}>Login</button>
+      <Link to="/register">Don't have an account? Register</Link>
     </div>
   );
 }
