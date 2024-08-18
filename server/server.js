@@ -20,7 +20,9 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
   })
 );
-
+ app.get("/", (req, res) => {
+    res.send("Hello World");
+ });
 // Handle preflight requests
 app.options("*", cors());
 
