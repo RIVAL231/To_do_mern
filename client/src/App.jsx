@@ -180,7 +180,7 @@ function App() {
           </div>
         ) : (
           <Routes>
-            <Route path="/" element={<Login setUser={setUser} />} />
+            <Route path="/" element={<Login setUser={setUser} fetchNotes={fetchNotes}/>} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login setUser={setUser} fetchNotes={fetchNotes} />} />
             <Route path="/notes" element={
