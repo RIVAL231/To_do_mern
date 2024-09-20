@@ -8,6 +8,7 @@ import Notes from '../Components/Notes';
 import NewNote from '../Components/NewNote';
 import Login from '../Components/Login';
 import Register from '../Components/Register';
+import LandingPage from '../Components/landing';
 
 function App() {
   const [showAdd, setAdd] = useState(false);
@@ -180,7 +181,7 @@ function App() {
           </div>
         ) : (
           <Routes>
-            <Route path="/" element={<Login setUser={setUser} fetchNotes={fetchNotes}/>} />
+            <Route path="/" element={<LandingPage/>} />
             <Route path='/register' element={<Register />} />
             <Route path='/login' element={<Login setUser={setUser} fetchNotes={fetchNotes} />} />
             <Route path="/notes" element={

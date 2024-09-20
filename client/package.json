@@ -19,6 +19,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "express": "^4.17.1",
+    "lucide-react": "^0.441.0",
     "node": "^22.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
